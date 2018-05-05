@@ -15,6 +15,4 @@
         <result column="is_enable" property="isEnable" jdbcType="INTEGER"/>
         <result column="remark" property="remark" jdbcType="VARCHAR"/>
     </resultMap>
-
-
 </mapper>
