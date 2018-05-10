@@ -1,4 +1,4 @@
-package tec.gomoo.oa.model;
+package xyz.frt.base.model;
 
 import java.io.Serializable;
 import java.util.Date;

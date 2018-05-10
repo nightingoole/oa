@@ -1,5 +1,7 @@
 package tec.gomoo.oa.model;
 
+import xyz.frt.base.model.BaseEntity;
+
 public class SystemPermission extends BaseEntity {
 
     private Integer orgId;

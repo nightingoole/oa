@@ -1,5 +1,7 @@
 package tec.gomoo.oa.model;
 
+import xyz.frt.base.model.BaseEntity;
+
 public class Organization extends BaseEntity {
 
     private String orgName;

@@ -1,6 +1,8 @@
 package tec.gomoo.oa.model;
 
 
+import xyz.frt.base.model.BaseEntity;
+
 public class UserOrg extends BaseEntity {
 
     private Integer userId;
