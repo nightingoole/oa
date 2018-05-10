@@ -26,6 +26,7 @@ public class ActivitiConfig {
     @Bean
     public ProcessEngine processEngine(DataSourceTransactionManager transactionManager, DataSource dataSource) throws IOException {
         SpringProcessEngineConfiguration configuration = new SpringProcessEngineConfiguration();
+        //自动部署已有的流程文件
         Resource[] resources = new PathMatchingResourcePatternResolver().getResources(ResourceLoader.CLASSPATH_URL_PREFIX + "processes/*.bpmn");
         configuration.setTransactionManager(transactionManager);
         configuration.setDataSource(dataSource);
