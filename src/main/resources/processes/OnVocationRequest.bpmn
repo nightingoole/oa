@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="onVocationRequest" name="on vocation request" isExecutable="true">
+    <startEvent id="start" name="Start" activiti:initiator="Initiator"></startEvent>
+    <userTask id="task_req" name="Commit Request" activiti:assignee="${Initiator}" activiti:candidateGroups="managers">
+      <extensionElements>
+        <activiti:formProperty id="username" name="姓名" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="department" name="部门" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="startTime" name="开始时间" type="date" required="true"></activiti:formProperty>
+        <activiti:formProperty id="endTime" name="结束时间" type="date" required="true"></activiti:formProperty>
+        <activiti:formProperty id="reason" name="请假原因" type="string" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow1" sourceRef="start" targetRef="task_req"></sequenceFlow>
+    <userTask id="task_dpt_app" name="Department Approval" activiti:assignee="${Initiator}" activiti:candidateGroups="managers">
+      <extensionElements>
+        <activiti:formProperty id="dprtAppOppo" name="部门审批意见" type="string" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow2" sourceRef="task_req" targetRef="task_dpt_app"></sequenceFlow>
+    <userTask id="task_mgr_app" name="Managerment Approval" activiti:assignee="${Initiator}" activiti:candidateGroups="managers">
+      <extensionElements>
+        <activiti:formProperty id="mgrAppOppo" name="经理审批意见" type="string" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow3" sourceRef="task_dpt_app" targetRef="task_mgr_app"></sequenceFlow>
+    <endEvent id="end" name="End"></endEvent>
+    <sequenceFlow id="flow4" sourceRef="task_mgr_app" targetRef="end"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_onAskForLeaveRequest">
+    <bpmndi:BPMNPlane bpmnElement="onAskForLeaveRequest" id="BPMNPlane_onAskForLeaveRequest">
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="35.0" width="35.0" x="30.0" y="50.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_req" id="BPMNShape_task_req">
+        <omgdc:Bounds height="55.0" width="105.0" x="110.0" y="40.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_dpt_app" id="BPMNShape_task_dpt_app">
+        <omgdc:Bounds height="55.0" width="105.0" x="260.0" y="40.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="task_mgr_app" id="BPMNShape_task_mgr_app">
+        <omgdc:Bounds height="55.0" width="105.0" x="410.0" y="40.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
+        <omgdc:Bounds height="35.0" width="35.0" x="560.0" y="50.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="65.0" y="67.0"></omgdi:waypoint>
+        <omgdi:waypoint x="110.0" y="67.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="215.0" y="67.0"></omgdi:waypoint>
+        <omgdi:waypoint x="260.0" y="67.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="365.0" y="67.0"></omgdi:waypoint>
+        <omgdi:waypoint x="410.0" y="67.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="515.0" y="67.0"></omgdi:waypoint>
+        <omgdi:waypoint x="560.0" y="67.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

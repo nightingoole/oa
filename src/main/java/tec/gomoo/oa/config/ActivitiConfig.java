@@ -4,12 +4,9 @@ import org.activiti.engine.*;
 import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
@@ -58,6 +55,11 @@ public class ActivitiConfig {
     @Bean
     public ManagementService managementService(ProcessEngine processEngine) {
         return processEngine.getManagementService();
+    }
+
+    @Bean
+    public IdentityService identityService(ProcessEngine processEngine) {
+        return processEngine.getIdentityService();
     }
 
 }
