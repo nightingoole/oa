@@ -8,4 +8,5 @@ import xyz.frt.base.model.BaseEntity;
  * @description
  */
 public class BaseFormEntity extends BaseEntity {
+
 }

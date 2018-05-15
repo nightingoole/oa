@@ -1,7 +1,10 @@
 package tec.gomoo.oa.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.activiti.engine.*;
+import org.activiti.engine.HistoryService;
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -11,7 +14,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import tec.gomoo.oa.model.Resource;
+import xyz.frt.base.form.BaseFormEntity;
 import xyz.frt.base.util.BaseUtils;
 
 import java.io.File;
@@ -154,6 +157,12 @@ public class ActivitiService {
         public String getName() {
             return name;
         }
+    }
+
+    public interface ActivitiInterface<T extends BaseFormEntity> {
+
+        public void completeTask(String taskId, T item);
+
     }
 
 }

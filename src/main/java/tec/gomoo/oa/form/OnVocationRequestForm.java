@@ -1,5 +1,6 @@
 package tec.gomoo.oa.form;
 
+import tec.gomoo.oa.config.ActivitiService;
 import xyz.frt.base.form.BaseFormEntity;
 
 /**
@@ -74,4 +75,5 @@ public class OnVocationRequestForm extends BaseFormEntity {
     public void setMgrAppOppo(String mgrAppOppo) {
         this.mgrAppOppo = mgrAppOppo;
     }
+
 }
